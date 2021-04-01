@@ -1,0 +1,67 @@
+<app-modal-header
+  [data]="modalHeader"
+  (onAction)="close($event)"
+></app-modal-header>
+<div class="modal-body">
+  <form name="productForm" [formGroup]="productForm">
+    <div class="form-group">
+      <label for="id" hidden="true">ID</label>
+      <input
+        formControlName="id"
+        type="text"
+        class="form-control"
+        id="id"
+        hidden="true"
+      />
+      <br />
+      <label for="code">CODE</label>
+      <input
+        formControlName="code"
+        type="text"
+        class="form-control"
+        id="code"
+      />
+      <br />
+      <label for="name">Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="name"
+      />
+      <br />
+      <label for="quantity">Quantity</label>
+      <input
+        formControlName="quantity"
+        type="text"
+        class="form-control"
+        id="quantity"
+      />
+      <br />
+      <label for="files">FILES</label>
+      <input
+        multiple
+        formControlName="files"
+        type="file"
+        class="form-control"
+        id="files"
+        (change)="loadFile($event)"
+      />
+      <br />
+      <label>IMAGE</label>
+      <div *ngIf="image">
+        <img
+          *ngFor="let i of image"
+          class="form-control"
+          src="{{ i }}"
+          height="50"
+          width="50"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+<app-modal-footer
+  [data]="modalFooter"
+  (onAction)="save($event)"
+></app-modal-footer>

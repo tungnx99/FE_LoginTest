@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { BaseService } from './base.service';
+import { environment } from 'src/environments/environment';
 
- 
 @Injectable()
-export class AccountAPI {
-    messange: string = "";
+export class AccountAPI extends BaseService {
+  messange: string = '';
 
-    constructor(private http: HttpClient) { }
+  constructor(http: HttpClient) {
+    super(http);
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {}
 
-    async httpAccountAPI(body: any)
-    {
-      return await this.http.post<any>('https://localhost:44309/api/account', body).toPromise();
-    }
+  saveAccount(body: any) {
+    return this.post<any>(
+      `${environment.host}/api/account`,
+      body
+    );
+  }
+
+  getAccount(params: {}, headers: {}) {
+    return this.get<any>(`${environment.host}/api/account/`, {
+      params: params,
+      headers: headers,
+    });
+  }
 }

@@ -1,1 +1,8 @@
-<p>showall works!</p>
+<div *ngIf="data && data.data">
+  <div *ngFor="let item of data.data">
+    <h1>{{item.userName}} {{item.role}}</h1>
+  </div>
+  <div style="bottom: 0;right: 0;position: absolute;">
+    <button *ngFor="let item of pagelist" (click) = "onPageIndexChange(item)">{{item}}</button>
+  </div>
+</div>

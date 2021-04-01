@@ -4,6 +4,7 @@
   class="login-form"
   (ngSubmit)="submitForm()"
 >
+  <div>Login: {{ messange }}</div>
   <nz-form-item>
     <nz-form-control nzErrorTip="Please input your username!">
       <nz-input-group nzPrefixIcon="user">
@@ -47,5 +48,3 @@
   </button>
   Or <a> register now! </a>
 </form>
-
-<div >Login: {{messange}}</div>
